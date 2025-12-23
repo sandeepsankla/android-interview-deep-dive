@@ -21,12 +21,14 @@ Coroutines are scheduled by the Kotlin runtime
 1.2 Threads vs Coroutines
 -------------------------------
 
-Aspect	Thread	Coroutine
-Creation cost	Heavy	Very light
-Memory	High	Low
-Blocking	Blocks OS thread	Suspends execution
-Cancellation	Unsafe	Cooperative
-Lifecycle	Manual	Structured
+| Aspect        | Thread           | Coroutine          |
+|---------------|------------------|--------------------|
+| Creation cost | Heavy            | Very light         |
+| Memory        | High             | Low                |
+| Blocking      | Blocks OS thread | Suspends execution |
+| Cancellation  | Unsafe           | Cooperative        |
+| Lifecycle     | Manual           | Structured         |
+
 
 
 
@@ -35,9 +37,7 @@ Lifecycle	Manual	Structured
 ---------------------------------------
 
 Main thread → UI, input, rendering (must be fast)
-
 Worker threads → network, DB, CPU work
-
 Coroutines allow thousands of tasks to share a few threads, preventing ANRs and memory issues.
 
 
@@ -72,6 +72,7 @@ Execution state → Continuation
 Stack → unwound on suspension
 
 Interview line
+--
 
 “The suspend keyword enables non-blocking suspension by compiling the function into a state machine.”
 
@@ -85,40 +86,35 @@ Thread.sleep(1000)
 
 
 Blocks thread
-
 Wastes dispatcher threads
-
 Causes UI freeze / ANR
-
 Not cancellable
 
-delay()
-delay(1000)
+`delay()
+delay(1000)`
 
 Advantages of delay()
+--
 
 Non-blocking – thread is released
-
 Cancellation-aware
-
 Fair scheduling – other coroutines can run
-
 Lifecycle-safe
 
-viewModelScope.launch {
+`viewModelScope.launch {
 delay(1000)
 updateUI()
-}
+}`
 
 
 If ViewModel is destroyed → coroutine cancels automatically.
-
+-
 
 
 
 1.6 withContext {} — waiting for result (IMPORTANT)
 ------------------------------------------------------------
-viewModelScope.launch {
+`viewModelScope.launch {
 println("Before")
 
     val result = withContext(Dispatchers.IO) {
@@ -126,26 +122,20 @@ println("Before")
     }
 
     println("Result = $result")
-}
+}`
+
 
 What happens step-by-step
 
-Coroutine starts on Main
-
+Coroutine starts on Main]
 withContext(IO) suspends coroutine
-
 Work runs on IO thread
-
 Result produced
-
 Coroutine resumes on Main
-
 Next line executes
 
-Important truths
+`Important truths
 
-withContext does NOT launch a new coroutine
-
+`withContext does NOT launch a new coroutine
 It suspends and waits
-
 It returns the result synchronously to the coroutine

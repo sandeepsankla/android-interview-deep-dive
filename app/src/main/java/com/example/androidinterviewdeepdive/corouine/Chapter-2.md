@@ -62,10 +62,13 @@ Returns result
 Throws exception if failed
 
 Comparison
-join	await
-Used with Job	Used with Deferred
-No result	Returns result
-Just waits	Waits + propagates error
+
+| join          | await                    |
+|---------------|--------------------------|
+| Used with Job | Used with Deferred       |
+| No result     | Returns result           |
+| Just waits    | Waits + propagates error |
+
 
 Interview line
 
@@ -76,10 +79,12 @@ Interview line
 
 2.4 coroutineScope vs withContext
 --
-coroutineScope	withContext
-Creates scope	Switches context
-Waits for children	Waits for block
-Same dispatcher	Can change dispatcher
+| coroutineScope     | withContext           |
+|--------------------|-----------------------|
+| Creates scope      | Switches context      |
+| Waits for children | Waits for block       |
+| Same dispatcher    | Can change dispatcher |
+
 
 Both suspend the caller.
 
