@@ -4,13 +4,11 @@
 2.1 launch
 ------------
 
-launch { doWork() }
-
+`launch { doWork() }
+`
 
 Fire-and-forget
-
 Returns Job
-
 Exception propagates immediately
 
 Use cases:
@@ -32,8 +30,8 @@ Returns Deferred<T>
 Exception thrown on await()
 ⚠️ Common bug
 
-async { apiCall() } // await never called
-
+`async { apiCall() } // await never called
+`
 
 → Exception silently lost
 
@@ -45,17 +43,18 @@ Use async only when a result is required.
 2.3 join() vs await() (NEW – IMPORTANT)
 ----
 
-join()
+`join()
 val job = launch { work() }
 job.join()
+`
 
 
 Waits for completion
 Does NOT return result
 Used with launch
 
-await()
-val result = async { compute() }.await()
+`await()
+val result = async { compute() }.await()`
 
 
 Waits for completion
@@ -90,10 +89,10 @@ Both suspend the caller.
 --
 
 
-supervisorScope {
+`supervisorScope {
     launch { api1() }
     launch { api2() }
-}
+}`
 
 
 Child failure does NOT cancel siblings
