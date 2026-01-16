@@ -120,7 +120,6 @@ println("Before")
     val result = withContext(Dispatchers.IO) {
         fetchFromNetwork()
     }
-
     println("Result = $result")
 }`
 
