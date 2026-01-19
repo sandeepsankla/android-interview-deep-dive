@@ -1,6 +1,7 @@
 >>📘 Chapter 3: The Data Layer (Infrastructure Layer)
 
-The Data Layer is responsible for providing data to the Domain layer by implementing the contracts (interfaces) defined in the Domain.
+The Data Layer is responsible for providing data to the Domain layer by implementing the contracts (interfaces)
+defined in the Domain.
 
 It is the outermost layer in Clean Architecture and depends inward.
 Any change in API, database, or framework should ideally impact only this layer.
@@ -107,7 +108,7 @@ User(id = userId, name = name)
 
 Domain models must never depend on API or database structures.
 
-3️⃣ Offline-First Data Flow
+# 3️⃣ Offline-First Data Flow
 Step-by-step flow:
 UseCase calls repository.getUser()
 Repository checks Local DB
@@ -150,7 +151,6 @@ Mapping belongs to the Data layer. This keeps the Domain layer pure and independ
 🔹 API returns 401 Unauthorized
 
 DataSource throws the raw error
-
 Repository catches it and converts it into a domain-friendly result
 
 🔹 DTO, Entity, and Domain have same fields — can we reuse one class?

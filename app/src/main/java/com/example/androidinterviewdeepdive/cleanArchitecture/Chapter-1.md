@@ -5,29 +5,24 @@ It is a system-level architectural approach, popularized by Robert C. Martin (Un
 
  To make business logic independent of frameworks, UI, and infrastructure.
 
-In Android development, this means ensuring that core application rules do not depend on Android, Retrofit, Room, or any specific framework.
+In Android development, this means ensuring that core application rules do not depend on Android, Retrofit, 
+Room, or any specific framework.
 
 >>1. Separation of Concerns (SoC)
 
 At the heart of Clean Architecture lies Separation of Concerns.
-
 Each part of the system should have one clear responsibility:
-
 UI is responsible only for displaying data and handling user interaction
-
 Data layer is responsible only for storing and retrieving data
-
 Business logic is responsible only for enforcing rules and decisions
 
-When responsibilities overlap, systems become:
+# When responsibilities overlap, systems become:
 
 difficult to test
-
 fragile during change
-
 tightly coupled to frameworks
 
-Clean Architecture exists to prevent this overlap.
+# Clean Architecture exists to prevent this overlap.
 
 >2. The “Plug-in” Philosophy
 
@@ -35,27 +30,22 @@ In Clean Architecture, frameworks are treated as plugins, not foundations.
 
 Android OS, Retrofit, Room, Compose — all are replaceable details.
 
-Mentor Analogy
+# Mentor Analogy
 
 Imagine you are designing a game console.
 
 The console’s internal logic does not care whether it is connected to:
 
 a Sony TV
-
 a Samsung TV
-
 a projector
-
 As long as the display follows a standard interface (HDMI), the console continues to work.
 
 In the same way:
 
-Business logic is the console
-
+`Business logic is the console
 Android frameworks are external devices
-
-Interfaces act as the HDMI ports
+Interfaces act as the HDMI ports`
 
 Clean Architecture ensures that frameworks plug into your system —
 your system does not depend on frameworks.
@@ -64,18 +54,13 @@ your system does not depend on frameworks.
 
 Interviewers often ask:
 
-“How does Clean Architecture relate to SOLID principles?”
-
+# “How does Clean Architecture relate to SOLID principles?”`
 Clean Architecture is essentially SOLID applied at a system level.
-
 Single Responsibility Principle (SRP)
 
 Each layer
-
 Each Use Case
-
 Each class
-
 has one reason to change.
 
 UI changes should not affect business rules.
@@ -85,13 +70,10 @@ Dependency Inversion Principle (DIP)
 
 This is the most critical principle in Clean Architecture.
 
-High-level modules (Domain / Business rules)
-do not depend on
-
-Low-level modules (UI, Database, Network)
+#  High-level modules (Domain / Business rules)
+# do not depend on Low-level modules (UI, Database, Network)
 
 Instead, both depend on abstractions (interfaces).
-
 This inversion of dependency direction is what protects your system from change.
 
 >>4. Screaming Architecture
